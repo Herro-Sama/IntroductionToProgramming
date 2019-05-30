@@ -1,43 +1,44 @@
+# Import all the relevant files needed to perform basic actions
 import sys
 import pygame
 from pygame.locals import *
 
+# Initialize pygame files
 pygame.init()
 
+# Setting up colour variables
+red = (255, 0, 0)
+green = (0, 255, 0)
+blue = (0, 0, 255)
+myColour = (0, 0, 0)
+
+# Set window parameters
 width = 800
 height = 600
 
-clock = pygame.time.Clock()
-fps = 60
-
+# Set the window to be the height and width.
 window = pygame.display.set_mode((width, height))
 
-player = pygame.image.load('Images/flatbrick.gif')
-playerX = 400
-playerY = 550
-
-white = (255, 255, 255)
-
+# Event Loop
 while True:
-    keysPressed = pygame.key.get_pressed()
 
-    window.fill(white)
-    window.blit(player, (playerX, playerY))
-
+    # Check if the Quit event has been called.
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
-        if event.type == KEYDOWN and event.key == K_ESCAPE:
-            pygame.quit()
-            sys.exit()
+        # Check for button presses then setting the appropriate colour.
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1:
+                myColour = red
 
-    if keysPressed[K_RIGHT]:
-        playerX += 10
+            if event.key == pygame.K_2:
+                myColour = green
 
-    if keysPressed[K_LEFT]:
-        playerX -= 10
+            if event.key == pygame.K_3:
+                myColour = blue
 
+    # Set the window fill and update the display.
+    window.fill(myColour)
     pygame.display.update()
-    clock.tick(fps)
