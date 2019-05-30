@@ -51,5 +51,6 @@ while True:
     if keysPressed[K_LEFT]:
         playerX -= 10
 
+    # Update the screen and lock the FPS to the established FPS.
     pygame.display.update()
     clock.tick(fps)
